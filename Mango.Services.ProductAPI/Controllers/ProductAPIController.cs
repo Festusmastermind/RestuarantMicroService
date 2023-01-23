@@ -1,6 +1,5 @@
 ﻿using Mango.Services.ProductAPI.Models.Dto;
 using Mango.Services.ProductAPI.Repository;
-using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -43,7 +42,6 @@ namespace Mango.Services.ProductAPI.Controllers
         
         public async Task<object> Get(int id)
         {
-
             try
             {
                 ProductDto productDto = await _productRespository.GetProductById(id);
@@ -80,7 +78,6 @@ namespace Mango.Services.ProductAPI.Controllers
         [Authorize]
         public async Task<object> Put([FromBody] ProductDto productDto)
         {
-            //var accessToken = await HttpContext.GetTokenAsync("access_token");
             try
             {
                 ProductDto model = await _productRespository.CreateUpdateProduct(productDto);
